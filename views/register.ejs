@@ -1,0 +1,110 @@
+<%- include('./partials/header', { title: 'הרשמה למערכת' }) %>
+
+<div class="container register-container">
+  <% if (error) { %>
+  <div class="error-message"><%= error %></div>
+  <% } %>
+
+  <form
+    action="/register"
+    method="POST"
+    class="form"
+    enctype="multipart/form-data"
+  >
+    <fieldset>
+      <legend>הרשמה למערכת</legend>
+
+      <div class="form-group">
+        <label for="username">שם משתמש:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          value="<%= typeof formData !== 'undefined' ? formData.username || '' : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">סיסמה:</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+
+      <div class="form-group">
+        <label for="firstName">שם פרטי:</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          required
+          value="<%= typeof formData !== 'undefined' ? formData.firstName || '' : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">שם משפחה:</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          required
+          value="<%= typeof formData !== 'undefined' ? formData.lastName || '' : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">אימייל:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          value="<%= typeof formData !== 'undefined' ? formData.email || '' : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">טלפון:</label>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          value="<%= typeof formData !== 'undefined' ? formData.phone || '' : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="birthDate">תאריך לידה:</label>
+        <input
+          type="date"
+          id="birthDate"
+          name="birthDate"
+          required
+          value="<%= typeof formData !== 'undefined' ? formData.birthDate || '' : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="profileImage">תמונת פרופיל:</label>
+        <input
+          type="file"
+          id="profileImage"
+          name="profileImage"
+          accept="image/*"
+        />
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">הרשמה</button>
+        <button
+          onclick="window.location.href='/login'"
+          class="btn btn-secondary"
+        >
+          כבר יש לי חשבון
+        </button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<%- include('./partials/footer') %>

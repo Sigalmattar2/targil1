@@ -1,0 +1,52 @@
+<%- include('./partials/header', { title: 'דף הבית' }) %>
+
+<div class="container home-container">
+  <% if (error) { %>
+  <div class="error-message"><%= error %></div>
+  <% } %>
+
+  <div class="profile-section">
+    <h2>ברוך הבא, <%= user.firstName %> <%= user.lastName %>!</h2>
+
+    <div class="profile-content">
+      <div class="profile-image">
+        <% if (user.profilePicture) { %>
+        <img
+          src="/profile/picture/<%= user.profilePicture %>"
+          alt="תמונת פרופיל"
+        />
+        <% } else { %>
+        <div class="no-image">אין תמונת פרופיל</div>
+        <% } %>
+      </div>
+
+      <div class="profile-details">
+        <div class="detail-item">
+          <span class="label">שם משתמש:</span>
+          <span class="value"><%= user.username %></span>
+        </div>
+
+        <div class="detail-item">
+          <span class="label">שם מלא:</span>
+          <span class="value"><%= user.firstName %> <%= user.lastName %></span>
+        </div>
+
+        <div class="detail-item">
+          <span class="label">דואר אלקטרוני:</span>
+          <span class="value"><%= user.email %></span>
+        </div>
+
+        <div class="detail-item">
+          <span class="label">תאריך לידה:</span>
+          <span class="value"><%= user.birthDate %></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="logout-container">
+      <a href="/logout" class="btn logout-btn">התנתק</a>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>
